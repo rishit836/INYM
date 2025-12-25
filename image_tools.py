@@ -70,7 +70,7 @@ def hamming_distance(hash1, hash2):
         raise ValueError("Hashes must be of equal length")
         
     return sum(b1 != b2 for b1, b2 in zip(hash1, hash2))
-def check_two_images(image_1_path,image_2_path):
+def get_dist(image_1_path,image_2_path):
     img_1_phash = get_p_hash(image_1_path)
     img_2_phash = get_p_hash(image_2_path)
 
@@ -81,4 +81,7 @@ def check_two_images(image_1_path,image_2_path):
 if __name__ == "__main__":
     img1,img2 = args.img1,args.img2
     
-    print(check_two_images(img1,img2))
+    if get_dist(img1,img2)<=12:
+        print("images are same")
+    else:
+        print("images are different.")
